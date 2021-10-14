@@ -6,10 +6,10 @@ using namespace std;
 class Figure
 {
 public:
-    string type;
-    double size;
-    double square;
-    /*double perimeter;*/
-
+    virtual double getSquare() = 0;
+    virtual double getVolume() = 0;
+    
+    
+   
 };
 
