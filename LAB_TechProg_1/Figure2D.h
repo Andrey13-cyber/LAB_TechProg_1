@@ -1,19 +1,17 @@
 #pragma once
 #include "Figure.h"
-class Figure2D :
+class Rectangle :
     public Figure
 {
-private:
-    string type;
-    double size;
-    double square;
-
 public:
+    Rectangle();
+    ~Rectangle();
+    Rectangle(const Rectangle&);
+    Rectangle(string type, double size, double square);
     void setType(string type);
     string getType();
     void setSize(double size);
     double getSize();
-    void setSquare(double square);
     double getSquare();
 };
 

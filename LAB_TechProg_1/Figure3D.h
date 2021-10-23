@@ -1,19 +1,17 @@
 #pragma once
 #include "Figure.h"
-class Figure3D :
+class Sphere :
     public Figure
 {
-private:
-    string type;
-    double size;
-    double volume;
-
 public:
+    Sphere();
+    ~Sphere();
+    Sphere(const Sphere&);
+    Sphere(string type, double size, double volume);
     void setType(string type);
     string getType();
     void setSize(double size);
     double getSize();
-    void setVolume(double volume);
     double getVolume();
 };
 
