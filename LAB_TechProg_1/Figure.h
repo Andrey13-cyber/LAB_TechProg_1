@@ -7,12 +7,14 @@ class Figure
 {
 private:
     string type;
-    double size;
-    double square;
-    double volume;
+    
 
 public:
+    Figure(string _type);
+    Figure(const Figure& figure);
+    ~Figure();
     virtual double getSquare() = 0;
     virtual double getVolume() = 0; 
+    virtual void print();
 };
 

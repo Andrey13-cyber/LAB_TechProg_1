@@ -24,9 +24,6 @@
     <ClCompile Include="Figure3D.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Keeper.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="main_menu.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
