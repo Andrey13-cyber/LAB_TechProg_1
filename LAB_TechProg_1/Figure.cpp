@@ -1,5 +1,13 @@
 #include "Figure.h"
 
-void Figure::print(string type, double size, double square, double volume) {
+Figure::Figure(string type) : type(type) {
+	cout << "Вызван конструктор типа объекта";
+}
 
+Figure::Figure(const Figure& figure) : type(figure.type) {
+	cout << "Вызван конструктор объекта";
+}
+
+void Figure::print(string type, int objNumber) {
+	cout << type << " " << objNumber << ":" << endl;
 }

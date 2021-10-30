@@ -1,6 +1,8 @@
 #pragma once
 #include<string>
 #include<iostream>
+#include <cmath>
+#include "Keeper.h"
 using namespace std;
 
 class Figure
@@ -10,11 +12,13 @@ private:
     
 
 public:
-    Figure(string _type);
+    Figure(string type);
     Figure(const Figure& figure);
-    ~Figure();
-    virtual double getSquare() = 0;
-    virtual double getVolume() = 0; 
-    virtual void print();
+    ~Figure() {
+        cout << "Вызван деструктор" << endl;
+    }
+    virtual double getSquareOrVolume() = 0;
+    virtual void changeObject() = 0;
+    virtual void print(string type, int objNumber);
 };
 

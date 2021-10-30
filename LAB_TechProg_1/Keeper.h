@@ -36,7 +36,7 @@ public:
 	Keeper<T>::Keeper(const Keeper<T>& keeper) {
 		object = new T[keeper.mass_lenght];
 		mass_lenght = keeper.mass_lenght;
-		for (i = 0; i < keeper.mass_lenght; i++);
+		for (int i = 0; i < keeper.mass_lenght; i++)
 		object[i] = keeper.object[i];
 	}
 
@@ -72,7 +72,7 @@ public:
 			int j = 0;
 			for (int i = 0; i < mass_lenght; i++)
 				if (i != index)
-					temp[j++] = onject[i];
+					temp[j++] = object[i];
 			mass_lenght--;
 			object = temp;
 	}
