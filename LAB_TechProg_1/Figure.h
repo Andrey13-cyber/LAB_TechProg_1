@@ -15,10 +15,11 @@ public:
     Figure(string type);
     Figure(const Figure& figure);
     ~Figure() {
-        cout << "Вызван деструктор" << endl;
+        cout << "Вызван деструктор Figure" << endl;
     }
     virtual double getSquareOrVolume() = 0;
     virtual void changeObject() = 0;
-    virtual void print(string type, int objNumber);
+    virtual void printToConsole();
+    virtual void inputFromConsole();
 };
 

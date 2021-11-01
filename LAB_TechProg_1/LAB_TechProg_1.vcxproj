@@ -140,14 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h" />
-    <ClInclude Include="Figure2D.h" />
-    <ClInclude Include="Figure3D.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="Sphere.h" />
     <ClInclude Include="Keeper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Figure.cpp" />
-    <ClCompile Include="Figure2D.cpp" />
-    <ClCompile Include="Figure3D.cpp" />
+    <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="main_menu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
