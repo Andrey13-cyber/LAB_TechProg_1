@@ -14,7 +14,7 @@ public:
         cout << "Вызван деструктор" << endl;
     };
     Sphere(const Sphere&);
-    Sphere(double radius, double volume);
+    Sphere(double radius);
     double getSquareOrVolume();
     virtual void changeObject();
     virtual void printToConsole();

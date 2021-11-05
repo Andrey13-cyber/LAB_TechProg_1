@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="graphics.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Keeper.h" />
@@ -149,6 +150,9 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="main_menu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="bgi.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,8 +2,11 @@
 #include "Figure.h"
 #include "Rect.h"
 #include "Sphere.h"
+#include <stdlib.h>
 #include <iostream>
-#include<windows.h>
+#include "graphics.h"
+
+//#include <windows.h>
 
 using namespace std;
 void menu();
@@ -52,6 +55,9 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     Keeper<Figure*> keeper;
+    int gm, gd = DETECT; //Переменные для инициализации графики
+	char a[2] = " ";
+    initgraph(&gd, &gm, a); //Поиск нужного графического драйвера
     
 
     cout << "Здравствуй,пользователь. Начинаем работу." << endl;
@@ -88,19 +94,20 @@ int main() {
 
         case 4:
             printToConsole(keeper);
-            
             break;
         }
     }
+    closegraph();
 }
 
 
 void addObject(Keeper<Figure*>& keeper)
 {
-    cout << "Выберете объект для добавления" << endl;
+    cout << "Выберете объект для добавления: " << endl;
     cout << "1. Прямоугольник" << endl;
     cout << "2. Шар(сфера)" << endl;
-    
+    cout << "-> " ;
+
     int typeObj = errorProc(1, 2);
     string typeFigure;
     if (typeObj == 1)

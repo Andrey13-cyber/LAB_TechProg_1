@@ -9,9 +9,9 @@ void Sphere::calcVolume() {
 	volume = (4.0 / 3.0) * 3.14 * pow(radius, 3.0);
 }
 
-Sphere::Sphere() : Figure("Шар"), radius(), volume()
+Sphere::Sphere() : Figure("Шар"), radius(0), volume(0)
 {
-	cout << "" << endl;
+	cout << "Вызван конструктор объемной фигуры" << endl;
 }
 
 
@@ -28,7 +28,7 @@ Sphere::Sphere(const Sphere& figure3d) : Figure(figure3d), radius(figure3d.radiu
 
 }
 
-Sphere::Sphere(double radius, double volume) : Figure("Шар"), radius(radius), volume(volume) {
+Sphere::Sphere(double radius) : Figure("Шар"), radius(radius) {
 	calcVolume();
 	cout << "Вызван конструктор объекта объемной фигуры";
 }
@@ -36,21 +36,23 @@ Sphere::Sphere(double radius, double volume) : Figure("Шар"), radius(radius), vo
 void Sphere::changeObject() {
 	cout << "Введите новый радиус: ";
 	cin >> radius;
-	
+
 }
 
 void Sphere::printToConsole() {
 	Figure::printToConsole();
 	cout << "Радиус: " << radius << endl;
 	cout << "Объём: " << volume << endl;
-
+	cleardevice();
+	circle(200, 200, radius);
 }
 
 void Sphere::inputFromConsole()
 {
-	
+
 	cout << "Введите радиус шара: ";
 	cin >> radius;
+	calcVolume();
 }
 
 void Sphere::setRadius(double radius) {

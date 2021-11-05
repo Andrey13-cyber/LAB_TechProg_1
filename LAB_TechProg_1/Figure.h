@@ -3,13 +3,14 @@
 #include<iostream>
 #include <cmath>
 #include "Keeper.h"
+#include "graphics.h"
 using namespace std;
 
 class Figure
 {
 private:
     string type;
-    
+
 
 public:
     Figure(string type);

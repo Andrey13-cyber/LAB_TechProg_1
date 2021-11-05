@@ -1,23 +1,25 @@
 #include "Rect.h"
 
-double Rect::getSquareOrVolume() {
-	return square;
 
+
+void Rect::calcSquare()
+{
+	square = lenght * width;
 }
 
 Rect::Rect() : Figure("Прямоугольник") {
-	cout << " " << endl;
+	cout << "Вызван конструктор плоской фигуры" << endl;
 
 }
 
 
 
-Rect::Rect(const Rect& figure2d) : Figure(figure2d),lenght(figure2d.lenght), width(figure2d.width), square(figure2d.square) {
+Rect::Rect(const Rect& figure2d) : Figure(figure2d), lenght(figure2d.lenght), width(figure2d.width), square(figure2d.square) {
 	cout << "Вызван конструктор копирования плоской фигуры";
 
 }
 
-Rect::Rect(double lenght, double width) : Figure("Прямоугольник"),  lenght(lenght), width(width) {
+Rect::Rect(double lenght, double width) : Figure("Прямоугольник"), lenght(lenght), width(width) {
 	calcSquare();
 	cout << "Вызван конструктор объекта плоской фигуры";
 
@@ -35,7 +37,8 @@ void Rect::printToConsole() {
 	cout << "Длина: " << lenght << endl;
 	cout << "Ширина: " << width << endl;
 	cout << "Площадь: " << square << endl;
-
+	cleardevice();
+	rectangle(100, 100, 100 + lenght, 100 + width);
 }
 
 void Rect::inputFromConsole()
@@ -44,7 +47,7 @@ void Rect::inputFromConsole()
 	cin >> lenght;
 	cout << "Введите ширину: ";
 	cin >> width;
-	
+	calcSquare();
 }
 
 void Rect::setWidth(double width) {
@@ -66,8 +69,10 @@ double Rect::getRectLenght() {
 	return lenght;
 }
 
-void Rect::calcSquare()
-{
-	square = lenght * width;
+double Rect::getSquareOrVolume() {
+	return square;
+
 }
+
+
 
