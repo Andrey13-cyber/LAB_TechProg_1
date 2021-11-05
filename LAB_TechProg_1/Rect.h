@@ -8,12 +8,12 @@ private:
     double width;
     double square;
 
-    
+
 
 public:
     Rect();
     ~Rect() {
-        cout << "Вызван деструктор" << endl;
+        cout << "Вызван деструктор плоской фигуры" << endl;
     };
     Rect(const Rect&);
     Rect(double lenght, double width);
@@ -26,5 +26,7 @@ public:
     void setLenght(double lenght);
     double getWidth();
     double getRectLenght();
+    virtual void printToFile(ostream& out);
+    virtual void inputFromFile(ifstream& file, string& fig);
 };
 

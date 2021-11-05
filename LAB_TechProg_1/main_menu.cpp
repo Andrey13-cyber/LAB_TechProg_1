@@ -4,7 +4,6 @@
 #include "Sphere.h"
 #include <stdlib.h>
 #include <iostream>
-#include "graphics.h"
 
 //#include <windows.h>
 
@@ -16,25 +15,29 @@ void changeObject(Keeper<Figure*>& keeper);
 void deleteObject(Keeper<Figure*>& keeper);
 Figure* createObj(string name);
 void printToConsole(Keeper<Figure*>& keeper);
+void printToFile(Keeper<Figure*>& keeper);
+void inputFromFile(Keeper<Figure*>& keeper);
+
 
 void menu() {
-        cout << endl << "----------------------------" << endl;
-        cout << endl << "      Главное меню   " << endl;
-        cout << endl << "----------------------------" << endl;
+    cout << endl << "----------------------------" << endl;
+    cout << endl << "      Главное меню   " << endl;
+    cout << endl << "----------------------------" << endl;
 
-        /*cout << "1. Выберите фигуру для работы " << endl;
-        cout << "2. Ввести размеры фигуры" << endl;
-        cout << "3. Посчитать площадь для плоской фигуры, объем для объемной фигуры" << endl;
-        cout << "4. Показать информацию о фигуре" << endl;
-        cout << "5. " << endl;
-        cout << "0.Выход" << endl;*/
+    /*cout << "1. Выберите фигуру для работы " << endl;
+    cout << "2. Ввести размеры фигуры" << endl;
+    cout << "3. Посчитать площадь для плоской фигуры, объем для объемной фигуры" << endl;
+    cout << "4. Показать информацию о фигуре" << endl;
+    cout << "5. " << endl;
+    cout << "0.Выход" << endl;*/
 
-        cout << "1. Добавить объект" << endl;
-        cout << "2. Изменить объект" << endl;
-        cout << "3. Удалить объект" << endl;
-        cout << "4. Вывести данные на экран" << endl;
-        cout << "5. Сохранить в файл" << endl;
-        cout << "0. Выход" << endl;
+    cout << "1. Добавить объект" << endl;
+    cout << "2. Изменить объект" << endl;
+    cout << "3. Удалить объект" << endl;
+    cout << "4. Вывести данные на экран" << endl;
+    cout << "5. Сохранить данные в файл" << endl;
+    cout << "6. Вывести данные из файла" << endl;
+    cout << "0. Выход" << endl;
 }
 
 int errorProc(int minValue, int maxValue) {
@@ -56,9 +59,9 @@ int main() {
     SetConsoleOutputCP(1251);
     Keeper<Figure*> keeper;
     int gm, gd = DETECT; //Переменные для инициализации графики
-	char a[2] = " ";
+    char a[2] = " ";
     initgraph(&gd, &gm, a); //Поиск нужного графического драйвера
-    
+
 
     cout << "Здравствуй,пользователь. Начинаем работу." << endl;
     cout << endl;
@@ -71,7 +74,7 @@ int main() {
     while (!step) {
         cout << endl;
         cout << "Введите пункт меню-> ";
-        selection = errorProc(0, 4);
+        selection = errorProc(0, 6);
         cout << endl;
         switch (selection)
         {
@@ -95,6 +98,13 @@ int main() {
         case 4:
             printToConsole(keeper);
             break;
+
+        case 5:
+            printToFile(keeper);
+            break;
+        case 6:
+            inputFromFile(keeper);
+            break;
         }
     }
     closegraph();
@@ -106,7 +116,7 @@ void addObject(Keeper<Figure*>& keeper)
     cout << "Выберете объект для добавления: " << endl;
     cout << "1. Прямоугольник" << endl;
     cout << "2. Шар(сфера)" << endl;
-    cout << "-> " ;
+    cout << "-> ";
 
     int typeObj = errorProc(1, 2);
     string typeFigure;
@@ -163,11 +173,62 @@ void printToConsole(Keeper<Figure*>& keeper) {
     else
     {
         cout << "Содержимое контейнера: " << endl;
-        for (int i = 0; i < keeper.getLenght() ; i++)
+        for (int i = 0; i < keeper.getLenght(); i++)
         {
             cout << endl;
             cout << i + 1 << ". ";
             keeper[i]->printToConsole();
         }
+    }
+}
+
+void printToFile(Keeper<Figure*>& keeper)
+{
+    ofstream output("keeper.txt");
+    output << keeper.getLenght() << endl;
+    for (int i = 0; i < keeper.getLenght(); i++)
+        keeper[i]->printToFile(output);
+    output.close();
+}
+
+
+void inputFromFile(Keeper<Figure*>& keeper) {
+
+
+    ifstream input("keeper.txt");
+    if (input.is_open())
+    {
+        string fig;
+        int countRecord;
+        if (!getline(input, fig))
+        {
+            input.close();
+            string err = "Файл не может быть прочитан";
+            throw err;
+        }
+        countRecord = (checkStringToDouble(fig) ? stod(fig) : 0);
+        try
+        {
+            for (int i = 0; i < countRecord; i++)
+            {
+                string err = "Файл не может быть корректно прочитан";
+                if (!getline(input, fig))
+                    throw err;
+                Figure* object = createObj(fig);
+                object->inputFromFile(input, fig);
+                keeper.pushback(object);
+            }
+        }
+        catch (string err)
+        {
+            input.close();
+            throw err;
+        }
+        input.close();
+    }
+    else
+    {
+        string err = "Файл keeper.txt не найден";
+        throw err;
     }
 }

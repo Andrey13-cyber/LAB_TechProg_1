@@ -1,9 +1,11 @@
 #pragma once
 #include<string>
 #include<iostream>
-#include <cmath>
+#include<cmath>
+#include "strToDouble.h"
 #include "Keeper.h"
 #include "graphics.h"
+#include<fstream>
 using namespace std;
 
 class Figure
@@ -22,5 +24,7 @@ public:
     virtual void changeObject() = 0;
     virtual void printToConsole();
     virtual void inputFromConsole();
+    virtual void printToFile(ostream& out);
+    virtual void inputFromFile(ifstream& file, string& fig);
 };
 

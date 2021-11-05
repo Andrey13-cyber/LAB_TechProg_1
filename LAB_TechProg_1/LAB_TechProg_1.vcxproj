@@ -144,12 +144,14 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Keeper.h" />
+    <ClInclude Include="strToDouble.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="strToDouble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="bgi.lib" />

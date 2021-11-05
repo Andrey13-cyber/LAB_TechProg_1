@@ -4,14 +4,14 @@ class Sphere :
     public Figure
 {
 
-private: 
+private:
     double volume;
     double radius;
 
 public:
     Sphere();
     ~Sphere() {
-        cout << "Вызван деструктор" << endl;
+        cout << "Вызван деструктор объемной фигуры" << endl;
     };
     Sphere(const Sphere&);
     Sphere(double radius);
@@ -22,5 +22,7 @@ public:
     void setRadius(double radius);
     double getRadius();
     void calcVolume();
-};
+    virtual void printToFile(ostream& out);
+    virtual void inputFromFile(ifstream& file, string& fig);
 
+};

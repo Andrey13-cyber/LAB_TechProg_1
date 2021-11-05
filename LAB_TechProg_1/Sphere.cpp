@@ -15,14 +15,6 @@ Sphere::Sphere() : Figure("Шар"), radius(0), volume(0)
 }
 
 
-//void Sphere::setSize(double size) {
-//	this->size = size;
-//}
-//
-//double Sphere::getSize() {
-//	return size;
-//}
-
 Sphere::Sphere(const Sphere& figure3d) : Figure(figure3d), radius(figure3d.radius), volume(figure3d.volume) {
 	cout << "Вызван конструктор копирования объемной фигуры";
 
@@ -62,4 +54,21 @@ void Sphere::setRadius(double radius) {
 
 double Sphere::getRadius() {
 	return radius;
+}
+
+void Sphere::printToFile(ostream& out)
+{
+	Figure::printToFile(out);
+	out << radius << endl;
+
+}
+
+void Sphere::inputFromFile(ifstream& file, string& fig)
+{
+	Figure::inputFromFile(file, fig);
+	string err = "Файл не может быть корректно прочитан";
+	if (!getline(file, fig))
+		throw err;
+	radius = (checkStringToDouble(fig) ? stod(fig) : 0);
+	calcVolume();
 }

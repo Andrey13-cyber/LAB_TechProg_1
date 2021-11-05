@@ -11,7 +11,7 @@ Figure::Figure(const Figure& figure) : type(figure.type) {
 void Figure::printToConsole()
 {
 	cout << type << endl;
-}											
+}
 
 void Figure::changeObject() {
 	cout << "¬ведите новый объект: ";
@@ -22,4 +22,19 @@ void Figure::inputFromConsole()
 {
 	cout << "¬ведите тип: ";
 	cin >> type;
+}
+
+void Figure::printToFile(ostream& out)
+{
+	out << type << endl;
+
+}
+
+void Figure::inputFromFile(ifstream& file, string& fig)
+{
+	string err = "‘айл не может быть корректно прочитан";
+	if (!getline(file, fig))
+		throw err;
+	type = fig;
+
 }

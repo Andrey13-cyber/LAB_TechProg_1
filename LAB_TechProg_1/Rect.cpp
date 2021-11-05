@@ -1,13 +1,11 @@
 #include "Rect.h"
 
-
-
 void Rect::calcSquare()
 {
 	square = lenght * width;
 }
 
-Rect::Rect() : Figure("Прямоугольник") {
+Rect::Rect() : Figure("Прямоугольник"), width(0), lenght(0), square(0) {
 	cout << "Вызван конструктор плоской фигуры" << endl;
 
 }
@@ -73,6 +71,29 @@ double Rect::getSquareOrVolume() {
 	return square;
 
 }
+
+void Rect::printToFile(ostream& out)
+{
+	Figure::printToFile(out);
+	out << lenght << endl;
+	out << width << endl;
+}
+
+void Rect::inputFromFile(ifstream& file, string& fig)
+{
+	Figure::inputFromFile(file, fig);
+	string err = "Файл не может быть корректно прочитан";
+	if (!getline(file, fig))
+		throw err;
+	width = (checkStringToDouble(fig) ? stod(fig) : 0);
+	if (!getline(file, fig))
+		throw err;
+	lenght = (checkStringToDouble(fig) ? stod(fig) : 0);
+	calcSquare();
+
+}
+
+
 
 
 
