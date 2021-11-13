@@ -65,7 +65,6 @@ void Sphere::printToFile(ostream& out)
 
 void Sphere::inputFromFile(ifstream& file, string& fig)
 {
-	Figure::inputFromFile(file, fig);
 	string err = "Файл не может быть корректно прочитан";
 	if (!getline(file, fig))
 		throw err;

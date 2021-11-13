@@ -25,6 +25,6 @@ public:
     virtual void printToConsole();
     virtual void inputFromConsole();
     virtual void printToFile(ostream& out);
-    virtual void inputFromFile(ifstream& file, string& fig);
+    virtual void inputFromFile(ifstream& file, string& fig) = 0;
 };
 

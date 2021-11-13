@@ -81,7 +81,6 @@ void Rect::printToFile(ostream& out)
 
 void Rect::inputFromFile(ifstream& file, string& fig)
 {
-	Figure::inputFromFile(file, fig);
 	string err = "Файл не может быть корректно прочитан";
 	if (!getline(file, fig))
 		throw err;

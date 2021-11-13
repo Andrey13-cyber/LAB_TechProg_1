@@ -156,6 +156,9 @@
   <ItemGroup>
     <Library Include="bgi.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="keeper.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

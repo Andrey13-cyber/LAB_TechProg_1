@@ -24,13 +24,6 @@ void menu() {
     cout << endl << "      Главное меню   " << endl;
     cout << endl << "----------------------------" << endl;
 
-    /*cout << "1. Выберите фигуру для работы " << endl;
-    cout << "2. Ввести размеры фигуры" << endl;
-    cout << "3. Посчитать площадь для плоской фигуры, объем для объемной фигуры" << endl;
-    cout << "4. Показать информацию о фигуре" << endl;
-    cout << "5. " << endl;
-    cout << "0.Выход" << endl;*/
-
     cout << "1. Добавить объект" << endl;
     cout << "2. Изменить объект" << endl;
     cout << "3. Удалить объект" << endl;
@@ -66,12 +59,11 @@ int main() {
     cout << "Здравствуй,пользователь. Начинаем работу." << endl;
     cout << endl;
 
-    menu();
-
     int step = 0;
     int selection;
 
     while (!step) {
+        menu();
         cout << endl;
         cout << "Введите пункт меню-> ";
         selection = errorProc(0, 6);
@@ -103,7 +95,12 @@ int main() {
             printToFile(keeper);
             break;
         case 6:
-            inputFromFile(keeper);
+            try {
+                inputFromFile(keeper);
+            }
+            catch (string err) {
+                cout << err << endl;
+            }
             break;
         }
     }
