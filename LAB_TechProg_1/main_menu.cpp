@@ -37,8 +37,10 @@ int errorProc(int minValue, int maxValue) {
     int place;
     while (1) {
         cin >> place;
-        if (place < minValue || place > maxValue) {
+        if (cin.fail() || place < minValue || place > maxValue) {
             cout << "Некорректный ввод, введите еще раз -> ";
+            cin.clear();
+            cin.ignore(65767, '\n');
         }
         else
             return place;

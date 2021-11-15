@@ -27,14 +27,4 @@ void Figure::inputFromConsole()
 void Figure::printToFile(ostream& out)
 {
 	out << type << endl;
-
 }
-
-//void Figure::inputFromFile(ifstream& file, string& fig)
-//{
-//	string err = "Файл не может быть корректно прочитан";
-//	if (!getline(file, fig))
-//		throw err;
-//	type = fig;
-//
-//}

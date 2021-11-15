@@ -24,5 +24,4 @@ public:
     void calcVolume();
     virtual void printToFile(ostream& out);
     virtual void inputFromFile(ifstream& file, string& fig);
-
 };

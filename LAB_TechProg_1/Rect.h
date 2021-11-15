@@ -8,8 +8,6 @@ private:
     double width;
     double square;
 
-
-
 public:
     Rect();
     ~Rect() {

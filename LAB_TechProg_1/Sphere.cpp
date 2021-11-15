@@ -28,6 +28,14 @@ Sphere::Sphere(double radius) : Figure("Ўар"), radius(radius) {
 void Sphere::changeObject() {
 	cout << "¬ведите новый радиус: ";
 	cin >> radius;
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(256, '\n');
+		cout << "Noncorrect new width, try again ->";
+		cin >> radius;
+	}
+	calcVolume();
 
 }
 
@@ -44,6 +52,13 @@ void Sphere::inputFromConsole()
 
 	cout << "¬ведите радиус шара: ";
 	cin >> radius;
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(256, '\n');
+		cout << "Noncorrect radius, try again ->";
+		cin >> radius;
+	}
 	calcVolume();
 }
 

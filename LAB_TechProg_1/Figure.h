@@ -13,7 +13,6 @@ class Figure
 private:
     string type;
 
-
 public:
     Figure(string type);
     Figure(const Figure& figure);
